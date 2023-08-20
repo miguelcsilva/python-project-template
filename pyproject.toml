@@ -9,6 +9,7 @@ packages = [{include = "project_name"}]
 [tool.poetry.dependencies]
 python = "^3.11"
 pydantic-settings = "^2.0.3"
+structlog = "^23.1.0"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.4.0"
