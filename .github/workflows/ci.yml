@@ -47,4 +47,6 @@ jobs:
         run: source .venv/bin/activate
 
       - name: Black
-        run: black --check .
+        run: |
+          source .venv/bin/activate
+          black --check .
