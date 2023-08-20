@@ -1,4 +1,4 @@
-from my_project.__main__ import hello_world
+from project_name.__main__ import hello_world
 
 
 def test_hello_world() -> None:

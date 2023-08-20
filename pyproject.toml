@@ -1,13 +1,14 @@
 [tool.poetry]
-name = "my_project"
+name = "project_name"
 version = "0.1.0"
 description = ""
 authors = ["Your Name <you@example.com>"]
 readme = "README.md"
-packages = [{include = "my_project"}]
+packages = [{include = "project_name"}]
 
 [tool.poetry.dependencies]
 python = "^3.11"
+pydantic-settings = "^2.0.3"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.4.0"
@@ -19,18 +20,19 @@ mypy = "^1.5.1"
 ruff = "^0.0.285"
 
 [tool.pytest.ini_options]
-addopts = "--cov=my_project"
+addopts = "--cov=project_name"
 testpaths = [
     "tests",
 ]
 pythonpath = [
-    "my_project",
+    "project_name",
 ]
 
 [tool.isort]
 profile = "black"
 
 [tool.mypy]
+plugins = ["pydantic.mypy"]
 check_untyped_defs = true
 disallow_any_generics = true
 disallow_any_unimported = true
