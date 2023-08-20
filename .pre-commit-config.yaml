@@ -21,6 +21,11 @@ repos:
         entry: isort .
         language: system
         pass_filenames: false
+      - id: ruff
+        name: ruff
+        entry: ruff --fix --exit-non-zero-on-fix .
+        language: system
+        pass_filenames: false
       - id: pytest
         name: pytest
         entry: pytest
