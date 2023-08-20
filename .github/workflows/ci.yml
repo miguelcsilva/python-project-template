@@ -34,7 +34,7 @@ jobs:
         run: pwd
 
       - name: Show current directory contents
-        run: ll
+        run: ls -la
 
       - name: Activate virtual environment
         run: source .venv/bin/activate
