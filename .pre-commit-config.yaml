@@ -11,9 +11,28 @@ repos:
       - id: trailing-whitespace
   - repo: local
     hooks:
+      - id: black
+        name: black
+        entry: black
+        language: system
+        types: [file, python]
+      - id: isort
+        name: isort
+        entry: isort
+        language: system
+        types: [file, python]
+      - id: ruff
+        name: ruff
+        entry: ruff --fix --exit-non-zero-on-fix
+        language: system
+        types: [file, python]
+      - id: mypy
+        name: mypy
+        entry: mypy .
+        language: system
+        pass_filenames: false
       - id: pytest
         name: pytest
         entry: pytest
         language: system
         pass_filenames: false
-        always_run: true
