@@ -11,6 +11,11 @@ repos:
       - id: trailing-whitespace
   - repo: local
     hooks:
+      - id: black
+        name: black
+        entry: black .
+        language: system
+        pass_filenames: false
       - id: pytest
         name: pytest
         entry: pytest
