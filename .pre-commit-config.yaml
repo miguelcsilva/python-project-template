@@ -3,7 +3,7 @@ repos:
     rev: v4.4.0
     hooks:
       - id: check-added-large-files
-      - id: check-ast
+      - id: check-toml
       - id: debug-statements
       - id: detect-aws-credentials
         args: [--allow-missing-credentials]
