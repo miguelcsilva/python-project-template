@@ -41,3 +41,15 @@ jobs:
 
       - name: Black
         run: black --check .
+
+      - name: Isort
+        run: black --check-only .
+
+      - name: Ruff
+        run: ruff --check .
+
+      - name: Mypy
+        run: mypy .
+
+      - name: Tests
+        run: pytest
