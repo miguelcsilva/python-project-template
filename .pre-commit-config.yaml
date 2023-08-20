@@ -23,16 +23,18 @@ repos:
         types: [file, python]
       - id: ruff
         name: ruff
-        entry: ruff --fix --exit-non-zero-on-fix
+        entry: ruff check --fix --exit-non-zero-on-fix
         language: system
         types: [file, python]
       - id: mypy
         name: mypy
         entry: mypy .
         language: system
+        types: [file, python]
         pass_filenames: false
       - id: pytest
         name: pytest
         entry: pytest
         language: system
+        types: [file, python]
         pass_filenames: false
