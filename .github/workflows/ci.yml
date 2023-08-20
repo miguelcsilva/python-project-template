@@ -43,7 +43,7 @@ jobs:
         run: black --check .
 
       - name: Isort
-        run: black --check-only .
+        run: isort --check-only .
 
       - name: Ruff
         run: ruff --check .
