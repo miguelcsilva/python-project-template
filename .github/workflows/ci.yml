@@ -30,23 +30,14 @@ jobs:
           path: .venv
           key: venv-${{ runner.os }}-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('**/poetry.lock') }}
 
-      - name: Show working directory path
-        run: pwd
-
       - name: Install dependencies if no cache
         if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
         run: poetry install --no-interaction
 
-      - name: Show working directory path
-        run: pwd
-
-      - name: Show current directory contents
-        run: ls -la
-
-      - name: Activate virtual environment
-        run: source .venv/bin/activate
+      - name: Activate venv
+        run: |
+          . .venv/bin/activate
+          echo PATH=$PATH >> $GITHUB_ENV
 
       - name: Black
-        run: |
-          source .venv/bin/activate
-          black --check .
+        run: black --check .
