@@ -5,10 +5,14 @@ repos:
       - id: check-added-large-files
       - id: check-toml
       - id: check-yaml
+      - id: end-of-file-fixer
+      - id: name-tests-test
+        args: [--pytest-test-first]
+
   - repo: local
     hooks:
       - id: pytest-check
-        name: pytest-check
+        name: Tests
         entry: pytest
         language: system
         pass_filenames: false
