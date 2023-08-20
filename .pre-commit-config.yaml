@@ -16,6 +16,11 @@ repos:
         entry: black .
         language: system
         pass_filenames: false
+      - id: isort
+        name: isort
+        entry: isort .
+        language: system
+        pass_filenames: false
       - id: pytest
         name: pytest
         entry: pytest
