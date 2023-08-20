@@ -9,11 +9,29 @@ jobs:
     steps:
       - name: Check-out repository.
         uses: actions/checkout@v3
+
       - name: Set-up python installation.
+        id: setup-python
         uses: actions/setup-python@v4
         with:
           python-version: "3.11"
+
       - name: Install poetry.
         uses: snok/install-poetry@v1
+
+      - name: Load cached venv
+        id: cached-poetry-dependencies
+        uses: actions/cache@v3
+        with:
+          path: .venv
+          key: venv-${{ runner.os }}-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('**/poetry.lock') }}
+
+      - name: Install dependencies if no cache.
+        if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
+        run: poetry install --no-interaction
+
+      - name: Activate virtual environment
+        run: source .venv/bin/activate
+
       - name: Black.
         run: black --check .
