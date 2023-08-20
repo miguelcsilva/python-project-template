@@ -1,5 +1,5 @@
-def hello_world():
-    print("Hello world!")
+def hello_world() -> str:
+    return "Hello world!"
 
 
-hello_world()
+print(hello_world())

@@ -13,17 +13,22 @@ repos:
     hooks:
       - id: black
         name: black
-        entry: black .
+        entry: black
         language: system
-        pass_filenames: false
+        types: [file, python]
       - id: isort
         name: isort
-        entry: isort .
+        entry: isort
         language: system
-        pass_filenames: false
+        types: [file, python]
       - id: ruff
         name: ruff
-        entry: ruff --fix --exit-non-zero-on-fix .
+        entry: ruff --fix --exit-non-zero-on-fix
+        language: system
+        types: [file, python]
+      - id: mypy
+        name: mypy
+        entry: mypy .
         language: system
         pass_filenames: false
       - id: pytest
@@ -31,4 +36,3 @@ repos:
         entry: pytest
         language: system
         pass_filenames: false
-        always_run: true
