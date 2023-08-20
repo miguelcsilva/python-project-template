@@ -30,9 +30,11 @@ repos:
         name: mypy
         entry: mypy .
         language: system
+        types: [file, python]
         pass_filenames: false
       - id: pytest
         name: pytest
         entry: pytest
         language: system
+        types: [file, python]
         pass_filenames: false
