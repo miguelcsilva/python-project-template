@@ -5,7 +5,13 @@ on:
 
 jobs:
   ci:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: ["ubuntu-latest"]
+        python-version: ["3.11"]
+
     steps:
       - name: Check-out repository
         uses: actions/checkout@v3
@@ -14,7 +20,7 @@ jobs:
         id: setup-python
         uses: actions/setup-python@v4
         with:
-          python-version: "3.11"
+          python-version: ${{ matrix.python-version }}
 
       - name: Install poetry
         uses: snok/install-poetry@v1
