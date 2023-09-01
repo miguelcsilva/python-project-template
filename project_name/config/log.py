@@ -1,9 +1,11 @@
 import logging
 import sys
+from typing import Any
 
 import structlog
 from structlog.dev import ConsoleRenderer
 from structlog.processors import JSONRenderer
+from structlog.stdlib import BoundLogger
 
 from .settings import SETTINGS, LogLevel, LogRenderer
 
@@ -30,7 +32,7 @@ def _get_structlog_renderer(log_renderer: LogRenderer) -> TypeRenderer:
     return mapper[log_renderer]
 
 
-def configure_logging() -> None:
+def _configure_logging() -> None:
     structlog.configure(
         processors=[
             structlog.stdlib.filter_by_level,
@@ -60,3 +62,9 @@ def configure_logging() -> None:
         stream=sys.stdout,
         level=_get_logging_level(log_level=SETTINGS.LOG_LEVEL),
     )
+
+
+def get_logger(*args: Any, **initial_values: Any) -> BoundLogger:
+    if not structlog.is_configured():
+        _configure_logging()
+    return structlog.stdlib.get_logger(*args, **initial_values)

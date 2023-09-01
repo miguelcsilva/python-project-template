@@ -5,14 +5,20 @@ import structlog
 from structlog.dev import ConsoleRenderer
 from structlog.processors import JSONRenderer
 
-from project_name.config import LogLevel, LogRenderer, TypeRenderer, configure_logging
-from project_name.config.log import _get_logging_level, _get_structlog_renderer
+from project_name.config.log import (
+    TypeRenderer,
+    _configure_logging,
+    _get_logging_level,
+    _get_structlog_renderer,
+    get_logger,
+)
+from project_name.config.settings import LogLevel, LogRenderer
 
 
 def test_configure_logging_configures_logging() -> None:
     structlog.reset_defaults()
     assert structlog.is_configured() is False
-    configure_logging()
+    _configure_logging()
     assert structlog.is_configured() is True
 
 
@@ -46,3 +52,10 @@ def test__get_structlog_renderer_returns_correct_structlog_renderer(
         type(_get_structlog_renderer(log_renderer=log_renderer))
         is structlog_renderer  # type:ignore[comparison-overlap]
     )
+
+
+def test_get_logger_returns_configured_logger() -> None:
+    structlog.reset_defaults()
+    assert structlog.is_configured() is False
+    get_logger(name=__name__)
+    assert structlog.is_configured() is True
