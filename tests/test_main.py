@@ -1,12 +1,11 @@
-from unittest.mock import patch
+import logging
+
+from pytest import LogCaptureFixture
 
 from project_name.__main__ import main
 
 
-def test_main_configures_logging() -> None:
-    with patch(
-        target="project_name.__main__.configure_logging"
-    ) as mock_configure_logging:
+def test_main_produces_log(caplog: LogCaptureFixture) -> None:
+    with caplog.at_level(logging.INFO):
         main()
-
-    mock_configure_logging.assert_called_once_with()
+    assert "This is a logging message." in caplog.text

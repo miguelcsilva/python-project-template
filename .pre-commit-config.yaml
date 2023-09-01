@@ -16,11 +16,6 @@ repos:
         entry: black
         language: system
         types: [file, python]
-      - id: isort
-        name: isort
-        entry: isort
-        language: system
-        types: [file, python]
       - id: ruff
         name: ruff
         entry: ruff check --fix --exit-non-zero-on-fix
