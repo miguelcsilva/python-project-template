@@ -10,7 +10,7 @@ jobs:
     strategy:
       matrix:
         os: ["ubuntu-latest"]
-        python-version: ["3.11"]
+        python-version: ["3.12"]
 
     steps:
       - name: Check-out repository
@@ -45,11 +45,11 @@ jobs:
           source .venv/bin/activate
           echo PATH=$PATH >> $GITHUB_ENV
 
-      - name: Black
-        run: black --check .
+      - name: Ruff format
+        run: ruff format --check .
 
-      - name: Ruff
-        run: ruff check .
+      - name: Ruff lint
+        run: ruff check --exit-non-zero-on-fix .
 
       - name: Mypy
         run: mypy .
