@@ -19,14 +19,10 @@ mypy = "*"
 ruff = "*"
 
 [tool.pytest.ini_options]
-addopts = "--cov=project_name"
+addopts = "--cov=src"
 testpaths = [
     "tests",
 ]
-pythonpath = [
-    "project_name",
-]
-
 
 [tool.ruff.lint]
 extend-select = [
