@@ -38,7 +38,7 @@ jobs:
 
       - name: Install dependencies if no cache
         if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
-        run: poetry install --no-interaction
+        run: poetry install
 
       - name: Activate venv
         run: |
