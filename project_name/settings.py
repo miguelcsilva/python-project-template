@@ -12,13 +12,13 @@ class LogLevel(StrEnum):
 
 
 class LogRenderer(StrEnum):
-    CONSOLE = "console"
+    TEXT = "text"
     JSON = "json"
 
 
 class Environment(StrEnum):
-    DEFAULT = "default"
     LOCAL = "local"
+    DEFAULT = "default"
 
 
 class _Settings(BaseSettings):
@@ -27,9 +27,9 @@ class _Settings(BaseSettings):
     )
 
     ENVIRONMENT: Environment = Environment.DEFAULT
-
     LOG_LEVEL: LogLevel = LogLevel.INFO
-    LOG_RENDERER: LogRenderer = LogRenderer.JSON
+    LOG_RENDERER: LogRenderer = LogRenderer.TEXT
+    THIRD_PARTY_LOG_LEVEL: LogLevel = LogLevel.WARNING
 
 
 SETTINGS = _Settings()

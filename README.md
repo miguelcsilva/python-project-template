@@ -8,8 +8,6 @@ A **start coding** template for you next Python project.
 - [Pydantic](https://docs.pydantic.dev/latest/): for settings management.
 - [Structlog](https://www.structlog.org/en/stable/index.html): for structured logging.
 - [Poetry](https://python-poetry.org/): for dependency and virtual environment management.
-- [Black](https://black.readthedocs.io/en/stable/): for linting.
-- [Isort](https://pycqa.github.io/isort/): for sorting imports.
-- [Ruff](https://github.com/astral-sh/ruff): for linting
+- [Ruff](https://github.com/astral-sh/ruff): for formatting and linting.
 - [Mypy](https://mypy.readthedocs.io/en/stable/): for type checking.
 - [Pytest](https://docs.pytest.org/) and [pytest-cov](https://pytest-cov.readthedocs.io/en/latest/): for testing.

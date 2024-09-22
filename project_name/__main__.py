@@ -1,10 +1,8 @@
-from .config.log import get_logger
+from project_name.log import LOGGER
 
 
 def main() -> None:
-    logger = get_logger(name=__name__)
-
-    logger.info("This is a logging message.")
+    LOGGER.info("Hello, world!")
 
 
 main()
