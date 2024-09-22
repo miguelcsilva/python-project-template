@@ -7,7 +7,7 @@ from structlog.dev import ConsoleRenderer
 from structlog.processors import JSONRenderer
 from structlog.stdlib import BoundLogger
 
-from .settings import SETTINGS, LogLevel, LogRenderer
+from project_name.settings import SETTINGS, LogLevel, LogRenderer
 
 
 def _get_logging_level(log_level: LogLevel) -> int:
