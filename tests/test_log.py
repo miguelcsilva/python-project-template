@@ -23,7 +23,8 @@ from project_name.settings import LogLevel, LogRenderer
     ],
 )
 def test_get_logging_level_returns_correct_logging_level(
-    log_level: LogLevel, logging_level: int
+    log_level: LogLevel,
+    logging_level: int,
 ) -> None:
     assert _get_logging_level(log_level=log_level) == logging_level
 
@@ -36,7 +37,8 @@ def test_get_logging_level_returns_correct_logging_level(
     ],
 )
 def test_get_structlog_renderer_returns_correct_structlog_renderer(
-    log_renderer: LogRenderer, structlog_renderer: TypeRenderer
+    log_renderer: LogRenderer,
+    structlog_renderer: TypeRenderer,
 ) -> None:
     assert (
         type(_get_structlog_renderer(log_renderer=log_renderer)) is structlog_renderer  # type:ignore[comparison-overlap]

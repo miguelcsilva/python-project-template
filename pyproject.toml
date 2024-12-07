@@ -1,3 +1,7 @@
+[project]
+name = "project_name"
+requires-python = ">=3.12"
+
 [tool.poetry]
 name = "project_name"
 version = "0.1.0"
@@ -26,41 +30,7 @@ testpaths = [
 ]
 
 [tool.ruff.lint]
-extend-select = [
-    "A", # flake8-builtins
-    "B", # flake8-bugbear
-    "BLE", # flake8-blind-except
-    "C4", # flake8-comprehensions
-    "C90", # mccabe
-    "D", # pydocstyle
-    "DJ", # flake8-django
-    "DTZ", # flake8-datetimez
-    "E", # pycodestyle errors
-    "ERA", # eradicate
-    "EXE", # flake8-executable
-    "F", # pyflakes
-    "G", # flake8-logging-format
-    "I", # isort
-    "ICN", # flake8-import-conventions
-    "N", # pep8-naming
-    "PIE", # flake8-pie
-    "PLC", # pylint - convention
-    "PLE", # pylint - error
-    "PLW", # pylint - warning
-    "PTH", # flake8-use-pathlib
-    "Q", # flake8-quotes
-    "RET", # flake8-return
-    "RUF", # Ruff-specific rules
-    "S", # flake8-bandit
-    "SIM", # flake8-simplify
-    "T10", # flake8-debugger
-    "T20", # flake8-print
-    "TCH", # flake8-type-checking
-    "TID", # flake8-tidy-imports
-    "UP", # pyupgrade
-    "W", # pycodestyle - warning
-    "YTT", # flake8-2020
-]
+select = ["ALL"]
 ignore = [
     "D100", # pydocstyle - missing docstring in public module
     "D101", # pydocstyle - missing docstring in public class
@@ -82,22 +52,7 @@ ignore = [
 
 [tool.mypy]
 plugins = ["pydantic.mypy"]
-check_untyped_defs = true
-disallow_any_generics = true
-disallow_any_unimported = true
-disallow_incomplete_defs = true
-disallow_subclassing_any = true
-disallow_untyped_calls = true
-disallow_untyped_decorators = true
-disallow_untyped_defs = true
-no_implicit_optional = true
-no_implicit_reexport = true
-show_error_codes = true
-strict_equality = true
-warn_return_any = true
-warn_redundant_casts = true
-warn_unused_configs = true
-warn_unused_ignores = true
+strict = true
 
 [build-system]
 requires = ["poetry-core"]
