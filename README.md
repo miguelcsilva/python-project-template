@@ -1,6 +1,6 @@
-# Python project template
+# 💻 Python project template
 
-💻 A simple template to get you started with your next Python project.
+A simple template to get you started with your next Python project.
 
 ## ✨ Main Features
 - 🔨 [Github Actions](https://github.com/features/actions): ready to use github CI action (with dependency caching included).
@@ -38,7 +38,7 @@ rm rename.sh
 Allows for the following out of the box:
 - Handle multiple running environments (`production`, `local`, etc.)
 - Easily control the logging level.
-- Log in either plain text or json.
+- Log in either `plain text` or `json`.
 - Control the logging level of third-party libraries.
 
 ## 🏗️ Folder structure
@@ -50,12 +50,12 @@ Simple and standardized folder structure so that you can start coding immediatel
 ├── README.md
 ├── src
 │  └── project_name
-│     ├── \_\_init\_\_.py
-│     ├── \_\_main\_\_.py
+│     ├── __init__.py
+│     ├── __main__.py
 │     ├── log.py
 │     └── settings.py
 └── tests
-   ├── \_\_init\_\_.py
+   ├── __init__.py
    ├── test_log.py
    └── test_settings.py
 ```
