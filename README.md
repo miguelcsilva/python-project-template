@@ -16,25 +16,6 @@
 ## 💥 When you run it
 ![Untitled design](https://github.com/user-attachments/assets/a0276a80-f405-4ebc-93b6-4e36b798ee58)
 
-## 🏗️ Folder structure
-Simple and standardized folder structure so that you can start coding immediately.
-
-├── LICENSE
-├── poetry.lock
-├── pyproject.toml
-├── README.md
-├── src
-│  └── project_name
-│     ├── \_\_init\_\_.py
-│     ├── \_\_main\_\_.py
-│     ├── log.py
-│     └── settings.py
-└── tests
-   ├── \_\_init\_\_.py
-   ├── test_log.py
-   └── test_settings.py
-
-
 ## 📦️ Usage
 -  On the top right corner of the github page click: "Use this template" -> "Create a new repository"
 - Create your new repository as desired.
@@ -52,3 +33,29 @@ chmod 700 ./rename.sh
 rm rename.sh
 ```
 - Enjoy!
+
+## Adaptable settings
+Allows for the following out of the box:
+- Handle multiple running environments (`production`, `local`, etc.)
+- Easily control the logging level.
+- Log in either plain text or json.
+- Control the logging level of third-party libraries.
+
+## 🏗️ Folder structure
+Simple and standardized folder structure so that you can start coding immediately.
+```shell
+├── LICENSE
+├── poetry.lock
+├── pyproject.toml
+├── README.md
+├── src
+│  └── project_name
+│     ├── \_\_init\_\_.py
+│     ├── \_\_main\_\_.py
+│     ├── log.py
+│     └── settings.py
+└── tests
+   ├── \_\_init\_\_.py
+   ├── test_log.py
+   └── test_settings.py
+```
