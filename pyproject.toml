@@ -23,6 +23,7 @@ pytest-cov = "*"
 pre-commit = "*"
 mypy = "*"
 ruff = "*"
+rich = "*"
 
 [tool.pytest.ini_options]
 testpaths = [
