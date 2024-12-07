@@ -17,7 +17,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Rename project
-        run: ./rename.sh my_project && ls -la src/
+        run: ./rename.sh my_project && cat tests/test_settings.py
 
       - name: Set-up python installation
         id: setup-python
