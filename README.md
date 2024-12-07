@@ -2,7 +2,7 @@
 
 💻 A simple template to get you started with your next Python project.
 
-## ✨ Features
+## ✨ Main Features
 - 🔨 [Github Actions](https://github.com/features/actions): ready to use github CI action (with dependency caching included).
 - ⚡️ [Pre-commit](https://pre-commit.com/): comprehensive set pre-commit hooks already defined.
 - 🔧 [Pydantic](https://docs.pydantic.dev/latest/): for settings management.
@@ -13,10 +13,26 @@
 - 🧪 [Pytest](https://docs.pytest.org/) and [pytest-cov](https://pytest-cov.readthedocs.io/en/latest/): for testing.
 
 
-## 💥 What you get
+## 💥 When you run it
 ![Untitled design](https://github.com/user-attachments/assets/a0276a80-f405-4ebc-93b6-4e36b798ee58)
 
+## 🏗️ Folder structure
+Simple and standardized folder structure so that you can start coding immediately.
 
+├── LICENSE
+├── poetry.lock
+├── pyproject.toml
+├── README.md
+├── src
+│  └── project_name
+│     ├── \_\_init\_\_.py
+│     ├── \_\_main\_\_.py
+│     ├── log.py
+│     └── settings.py
+└── tests
+   ├── \_\_init\_\_.py
+   ├── test_log.py
+   └── test_settings.py
 
 
 ## 📦️ Usage
