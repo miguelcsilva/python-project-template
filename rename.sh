@@ -7,8 +7,14 @@ then
   echo "ERROR: Please provide a new project name. Example: ./rename.sh my_project";
   exit 1;
 fi
-
-find src -type f -exec sed -i "s/project_name/$new_project_name/g" {} \;
-find tests -type f -exec sed -i "s/project_name/$new_project_name/g" {} \;
-sed -i "s/project_name/$new_project_name/g" pyproject.toml;
-mv src/project_name src/$new_project_name
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    find src -type f -exec sed -i "s/project_name/$new_project_name/g" {} \;
+    find tests -type f -exec sed -i "s/project_name/$new_project_name/g" {} \;
+    sed -i "s/project_name/$new_project_name/g" pyproject.toml;
+    mv src/project_name src/$new_project_name
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+    find src -type f -exec sed -i '' "s/project_name/$new_project_name/g" {} +;
+    find tests -type f -exec sed -i '' "s/project_name/$new_project_name/g" {} +;
+    sed -i "s/project_name/$new_project_name/g" pyproject.toml;
+    mv src/project_name src/$new_project_name
+fi
