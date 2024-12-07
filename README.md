@@ -14,7 +14,7 @@
 
 
 ## 💥 What you get
-[image](https://gist.github.com/user-attachments/assets/5b7634d9-f784-4038-976e-c1d7a18151e6)
+![image](https://gist.github.com/user-attachments/assets/5b7634d9-f784-4038-976e-c1d7a18151e6)
 
 
 
