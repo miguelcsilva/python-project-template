@@ -36,10 +36,10 @@ rm rename.sh
 
 ## 🔧 Adaptable settings
 Allows for the following out of the box:
-  ✅ Handle multiple running environments (`production`, `local`, etc.)
-  ✅ Easily control the logging level.
-  ✅ Log in either plain text or json.
-  ✅ Control the logging level of third-party libraries.
+- Handle multiple running environments (`production`, `local`, etc.)
+- Easily control the logging level.
+- Log in either plain text or json.
+- Control the logging level of third-party libraries.
 
 ## 🏗️ Folder structure
 Simple and standardized folder structure so that you can start coding immediately.
