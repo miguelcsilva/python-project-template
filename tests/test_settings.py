@@ -1,7 +1,4 @@
-from typing import Any
-
 import pytest
-from pytest import MonkeyPatch
 
 from project_name.settings import (
     Environment,
@@ -31,7 +28,10 @@ from project_name.settings import (
     ],
 )
 def test_settings_attribute_is_correctly_instantiated_when_provided(
-    monkeypatch: MonkeyPatch, name: str, value: str, expected: Any
+    monkeypatch: pytest.MonkeyPatch,
+    name: str,
+    value: str,
+    expected: str,
 ) -> None:
     monkeypatch.setenv(name=name, value=value)
     settings = _Settings()
@@ -49,7 +49,9 @@ def test_settings_attribute_is_correctly_instantiated_when_provided(
     ],
 )
 def test_settings_attribute_has_correct_default_when_missing(
-    monkeypatch: MonkeyPatch, name: str, expected: Any
+    monkeypatch: pytest.MonkeyPatch,
+    name: str,
+    expected: str,
 ) -> None:
     monkeypatch.delattr(target=_Settings, name="model_config")
     settings = _Settings()

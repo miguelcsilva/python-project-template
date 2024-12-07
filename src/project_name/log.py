@@ -41,13 +41,13 @@ STANDARD_LOGGING_CONFIG = {
             "class": "logging.StreamHandler",
             "formatter": "simple",
             "stream": "ext://sys.stdout",
-        }
+        },
     },
     "loggers": {
         "root": {
             "level": _get_logging_level(SETTINGS.THIRD_PARTY_LOG_LEVEL),
             "handlers": ["stdout"],
-        }
+        },
     },
 }
 
@@ -65,7 +65,7 @@ def _configure_logging() -> None:
                     structlog.processors.CallsiteParameter.FILENAME,
                     structlog.processors.CallsiteParameter.FUNC_NAME,
                     structlog.processors.CallsiteParameter.LINENO,
-                }
+                },
             ),
             structlog.processors.EventRenamer(to="message"),
             renderer,
@@ -74,7 +74,7 @@ def _configure_logging() -> None:
     logging.config.dictConfig(config=STANDARD_LOGGING_CONFIG)
 
 
-def _get_logger(*args: Any, **initial_values: Any) -> BoundLogger:
+def _get_logger(*args: Any, **initial_values: dict[str, Any]) -> BoundLogger:  # noqa: ANN401
     if not structlog.is_configured():
         _configure_logging()
     return structlog.stdlib.get_logger(*args, **initial_values)
