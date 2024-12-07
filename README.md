@@ -17,14 +17,14 @@
 ![Untitled design](https://github.com/user-attachments/assets/a0276a80-f405-4ebc-93b6-4e36b798ee58)
 
 ## 📦️ Usage
--  On the top right corner of the github page click: "Use this template" -> "Create a new repository"
+-  On the top right corner of the github page click: `Use this template` -> `Create a new repository`
 - Create your new repository as desired.
 - Clone the newly created repository to your local machine.
 - Give execute permissions to the rename script:
 ```shell
 chmod 700 ./rename.sh
 ```
-- Execute the rename script to rename the project to your desired new name. For example, to rename from "project_name" to "my_project" do:
+- Execute the rename script to rename the project to your desired new name. For example, to rename from `project_name` to `my_project` do:
 ```shell
 ./rename.sh my_project
 ```
@@ -34,12 +34,12 @@ rm rename.sh
 ```
 - Enjoy!
 
-## Adaptable settings
+## 🔧 Adaptable settings
 Allows for the following out of the box:
-- Handle multiple running environments (`production`, `local`, etc.)
-- Easily control the logging level.
-- Log in either plain text or json.
-- Control the logging level of third-party libraries.
+  ✅ Handle multiple running environments (`production`, `local`, etc.)
+  ✅ Easily control the logging level.
+  ✅ Log in either plain text or json.
+  ✅ Control the logging level of third-party libraries.
 
 ## 🏗️ Folder structure
 Simple and standardized folder structure so that you can start coding immediately.
