@@ -14,7 +14,8 @@
 
 
 ## 💥 What you get
-![image](https://gist.github.com/user-attachments/assets/5b7634d9-f784-4038-976e-c1d7a18151e6)
+![Untitled design](https://github.com/user-attachments/assets/a0276a80-f405-4ebc-93b6-4e36b798ee58)
+
 
 
 
