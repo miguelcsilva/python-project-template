@@ -9,12 +9,15 @@ jobs:
 
     strategy:
       matrix:
-        os: ["ubuntu-latest"]
-        python-version: ["3.11","3.12","3.13"]
+        os: ["ubuntu-latest", "macos-latest"]
+        python-version: ["3.11", "3.12", "3.13"]
 
     steps:
       - name: Check-out repository
         uses: actions/checkout@v3
+
+      - name: Rename project
+        run: ./rename.sh my_project
 
       - name: Set-up python installation
         id: setup-python
