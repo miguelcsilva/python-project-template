@@ -10,12 +10,12 @@ from project_name.settings import (
 
 
 @pytest.mark.parametrize(
-    argnames=["environment", "additional_attributes", "expected_settings"],
+    argnames=("environment", "additional_attributes", "expected_settings"),
     argvalues=[
-        ["local", {}, _LocalSettings(ENVIRONMENT=Environment.LOCAL)],
-        ["test", {}, _TestSettings(ENVIRONMENT=Environment.TEST)],
-        ["default", {}, _Settings()],
-        [None, {}, _Settings()],
+        ("local", {}, _LocalSettings(ENVIRONMENT=Environment.LOCAL)),
+        ("test", {}, _TestSettings(ENVIRONMENT=Environment.TEST)),
+        ("default", {}, _Settings()),
+        (None, {}, _Settings()),
     ],
 )
 def test_get_settings_from_environment(
