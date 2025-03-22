@@ -1,6 +1,6 @@
 [project]
 name = "project_name"
-requires-python = ">=3.11"
+requires-python = ">=3.12"
 
 [tool.poetry]
 name = "project_name"
@@ -13,7 +13,7 @@ packages = [
 ]
 
 [tool.poetry.dependencies]
-python = ">=3.11"
+python = ">=3.12"
 pydantic-settings = "*"
 structlog = "*"
 
