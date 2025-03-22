@@ -13,13 +13,13 @@ from project_name.settings import LogLevel, LogRenderer
 
 
 @pytest.mark.parametrize(
-    argnames=["log_level", "logging_level"],
+    argnames=("log_level", "logging_level"),
     argvalues=[
-        [LogLevel.CRITICAL, logging.CRITICAL],
-        [LogLevel.ERROR, logging.ERROR],
-        [LogLevel.WARNING, logging.WARNING],
-        [LogLevel.INFO, logging.INFO],
-        [LogLevel.DEBUG, logging.DEBUG],
+        (LogLevel.CRITICAL, logging.CRITICAL),
+        (LogLevel.ERROR, logging.ERROR),
+        (LogLevel.WARNING, logging.WARNING),
+        (LogLevel.INFO, logging.INFO),
+        (LogLevel.DEBUG, logging.DEBUG),
     ],
 )
 def test_get_logging_level_returns_correct_logging_level(
@@ -30,10 +30,10 @@ def test_get_logging_level_returns_correct_logging_level(
 
 
 @pytest.mark.parametrize(
-    argnames=["log_renderer", "structlog_renderer"],
+    argnames=("log_renderer", "structlog_renderer"),
     argvalues=[
-        [LogRenderer.TEXT, ConsoleRenderer],
-        [LogRenderer.JSON, JSONRenderer],
+        (LogRenderer.TEXT, ConsoleRenderer),
+        (LogRenderer.JSON, JSONRenderer),
     ],
 )
 def test_get_structlog_renderer_returns_correct_structlog_renderer(
