@@ -19,43 +19,25 @@ jobs:
       - name: Rename project
         run: ./rename.sh my_project
 
-      - name: Set-up python installation
-        id: setup-python
-        uses: actions/setup-python@v4
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
         with:
-          python-version: ${{ matrix.python-version }}
+          enable-cache: true
 
-      - name: Install poetry
-        uses: snok/install-poetry@v1
-        with:
-          virtualenvs-create: true
-          virtualenvs-in-project: true
-          installer-parallel: true
+      - name: Set up Python
+        run: uv python install ${{ matrix.python-version }}
 
-      - name: Load cached venv
-        id: cached-poetry-dependencies
-        uses: actions/cache@v3
-        with:
-          path: .venv
-          key: venv-${{ runner.os }}-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('**/poetry.lock') }}
-
-      - name: Install dependencies if no cache
-        if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
-        run: poetry install
-
-      - name: Activate venv
-        run: |
-          source .venv/bin/activate
-          echo PATH=$PATH >> $GITHUB_ENV
+      - name: Install dependencies
+        run: uv sync --extra dev
 
       - name: Ruff format
-        run: ruff format --check .
+        run: uv run ruff format --check .
 
       - name: Ruff lint
-        run: ruff check --exit-non-zero-on-fix .
+        run: uv run ruff check --exit-non-zero-on-fix .
 
       - name: Mypy
-        run: mypy .
+        run: uv run mypy .
 
       - name: Tests
-        run: pytest
+        run: uv run pytest

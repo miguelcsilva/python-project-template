@@ -14,8 +14,8 @@ from project_name.settings import (
     argvalues=[
         ("local", {}, _LocalSettings(ENVIRONMENT=Environment.LOCAL)),
         ("test", {}, _TestSettings(ENVIRONMENT=Environment.TEST)),
-        ("default", {}, _Settings()),
-        (None, {}, _Settings()),
+        ("default", {}, _Settings(ENVIRONMENT=Environment.DEFAULT)),
+        (None, {}, _Settings(ENVIRONMENT=Environment.DEFAULT)),
     ],
 )
 def test_get_settings_from_environment(
@@ -24,6 +24,8 @@ def test_get_settings_from_environment(
     additional_attributes: dict[str, str],
     expected_settings: _Settings,
 ) -> None:
+    monkeypatch.delenv("ENVIRONMENT", raising=False)
+
     if environment:
         monkeypatch.setenv("ENVIRONMENT", environment)
     for name, value in additional_attributes.items():
