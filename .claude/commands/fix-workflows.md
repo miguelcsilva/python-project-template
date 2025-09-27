@@ -1,5 +1,5 @@
 ---
-allowed-tools: Bash(gh:*), Bash(git:*), Read(*), Edit(*), MultiEdit(*), Glob(*), Grep(*), LS(*), Write(*)
+allowed-tools: Bash(gh:*), Bash(git:*), Bash(uv:*), Read(*), Edit(*), MultiEdit(*), Glob(*), Grep(*), LS(*), Write(*)
 description: Automatically detect and fix failing GitHub workflows on the current branch
 ---
 
@@ -66,7 +66,16 @@ The key is to use the exact same commands and tools that the project already use
   - Format: `fix: resolve <workflow-name> failures - <brief-description>`
   - Include what was fixed and why
 - Create the commit with `git commit`
-- Ask user before pushing changes
+- Push the branch: `git push origin <branch-name>`
+- Wait for the workflow to complete and verify it passes
+
+### 6. Verify Workflow Success
+
+After pushing:
+- Use `gh run list --branch <current-branch> --limit 1` to get the latest run
+- Use `gh run watch <run-id>` to monitor the workflow in real-time
+- Confirm the workflow completes successfully
+- If it still fails, repeat the analysis and fix process
 
 ## Error Handling:
 
