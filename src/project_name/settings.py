@@ -30,7 +30,7 @@ class _Settings(BaseSettings):
     ENVIRONMENT: Environment = Environment.DEFAULT
     LOG_LEVEL: LogLevel = LogLevel.INFO
     LOG_RENDERER: LogRenderer = LogRenderer.TEXT
-    THIRD_PARTY_LOG_LEVEL: LogLevel = LogLevel.WARNING
+    LOG_LEVEL_THIRD_PARTY: LogLevel = LogLevel.WARNING
 
 
 class _LocalSettings(_Settings):
