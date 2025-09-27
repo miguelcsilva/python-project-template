@@ -1,7 +1,6 @@
 # Python Project Template
 
 A **modern Python project template** with best practices and tooling configured out of the box.
-*Get up and running in minutes, not hours!*
 
 ## Features
 
