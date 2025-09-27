@@ -1,4 +1,6 @@
-from project_name.log import LOGGER
+from project_name.log import get_logger
+
+LOGGER = get_logger()
 
 
 def main() -> None:

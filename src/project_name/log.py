@@ -1,6 +1,5 @@
 import logging
 import logging.config
-from typing import Any
 
 import structlog
 from structlog.dev import ConsoleRenderer
@@ -35,17 +34,42 @@ def _get_structlog_renderer(log_renderer: LogRenderer) -> TypeRenderer:
 STANDARD_LOGGING_CONFIG = {
     "version": 1,
     "disable_existing_loggers": False,
-    "formatters": {"simple": {"format": "%(levelname)s: %(message)s"}},
+    "formatters": {
+        "structlog": {
+            "()": structlog.stdlib.ProcessorFormatter,
+            "processor": _get_structlog_renderer(SETTINGS.LOG_RENDERER),
+            "foreign_pre_chain": [
+                structlog.contextvars.merge_contextvars,
+                structlog.processors.TimeStamper(fmt="%Y-%m-%d %H:%M:%S"),
+                structlog.processors.add_log_level,
+                structlog.stdlib.add_logger_name,
+                structlog.processors.CallsiteParameterAdder(
+                    parameters={
+                        structlog.processors.CallsiteParameter.FILENAME,
+                        structlog.processors.CallsiteParameter.FUNC_NAME,
+                        structlog.processors.CallsiteParameter.LINENO,
+                    },
+                ),
+                structlog.processors.EventRenamer(to="message"),
+                structlog.processors.StackInfoRenderer(),
+            ],
+        },
+    },
     "handlers": {
         "stdout": {
             "class": "logging.StreamHandler",
-            "formatter": "simple",
+            "formatter": "structlog",
             "stream": "ext://sys.stdout",
         },
     },
     "loggers": {
+        "project_name": {
+            "level": _get_logging_level(SETTINGS.LOG_LEVEL),
+            "handlers": ["stdout"],
+            "propagate": False,
+        },
         "root": {
-            "level": _get_logging_level(SETTINGS.THIRD_PARTY_LOG_LEVEL),
+            "level": _get_logging_level(SETTINGS.LOG_LEVEL_THIRD_PARTY),
             "handlers": ["stdout"],
         },
     },
@@ -53,13 +77,12 @@ STANDARD_LOGGING_CONFIG = {
 
 
 def _configure_logging() -> None:
-    log_level = _get_logging_level(SETTINGS.LOG_LEVEL)
-    renderer = _get_structlog_renderer(SETTINGS.LOG_RENDERER)
     structlog.configure(
-        wrapper_class=structlog.make_filtering_bound_logger(log_level),
         processors=[
+            structlog.contextvars.merge_contextvars,
             structlog.processors.TimeStamper(fmt="%Y-%m-%d %H:%M:%S"),
             structlog.processors.add_log_level,
+            structlog.stdlib.add_logger_name,
             structlog.processors.CallsiteParameterAdder(
                 parameters={
                     structlog.processors.CallsiteParameter.FILENAME,
@@ -68,16 +91,18 @@ def _configure_logging() -> None:
                 },
             ),
             structlog.processors.EventRenamer(to="message"),
-            renderer,
+            structlog.stdlib.ProcessorFormatter.wrap_for_formatter,
         ],
+        logger_factory=structlog.stdlib.LoggerFactory(),
+        wrapper_class=structlog.stdlib.BoundLogger,
+        cache_logger_on_first_use=True,
     )
     logging.config.dictConfig(config=STANDARD_LOGGING_CONFIG)
 
 
-def _get_logger(*args: Any, **initial_values: dict[str, Any]) -> BoundLogger:  # noqa: ANN401
+def get_logger(name: str = "project_name") -> BoundLogger:
     if not structlog.is_configured():
         _configure_logging()
-    return structlog.stdlib.get_logger(*args, **initial_values)
-
-
-LOGGER = _get_logger("project_name")
+    if name != "project_name" and not name.startswith("project_name."):
+        name = f"project_name.{name}"
+    return structlog.stdlib.get_logger(name)
