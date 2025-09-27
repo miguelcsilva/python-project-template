@@ -13,6 +13,20 @@ A modern Python project template with best practices and tooling configured out 
 - **Type Checking**: [Mypy](https://mypy.readthedocs.io/en/stable/) for static type checking
 - **Testing**: [Pytest](https://docs.pytest.org/) with [pytest-cov](https://pytest-cov.readthedocs.io/en/latest/) for coverage
 
+## Example Output
+
+When you run the project, you'll see different logging formats depending on your configuration:
+
+### Textual Logs (Human-Readable)
+![Untitled design](https://github.com/user-attachments/assets/a0276a80-f405-4ebc-93b6-4e36b798ee58)
+
+### JSON Structured Logging (Machine-Readable)
+```json
+{"timestamp": "2025-09-27 16:36:15", "level": "info", "logger": "project_name", "filename": "__main__.py", "lineno": 7, "func_name": "main", "message": "Program started."}
+{"exc_info": true, "timestamp": "2025-09-27 16:36:15", "level": "error", "logger": "project_name", "filename": "__main__.py", "lineno": 12, "func_name": "main", "message": "Cannot divide by 0."}
+{"timestamp": "2025-09-27 16:36:15", "level": "info", "logger": "project_name", "filename": "__main__.py", "lineno": 13, "func_name": "main", "message": "Program finished."}
+```
+
 ## Quick Start
 
 To use this template:
@@ -65,20 +79,6 @@ The template includes flexible configuration management:
 - **Environment Support**: Handle multiple environments (`production`, `local`, etc.)
 - **Logging Control**: Configurable logging levels and formats (plain text or JSON)
 - **Third-party Libraries**: Control logging levels for external dependencies
-
-## Example Output
-
-When you run the project, you'll see different logging formats depending on your configuration:
-
-### Textual Logs (Human-Readable)
-![Untitled design](https://github.com/user-attachments/assets/a0276a80-f405-4ebc-93b6-4e36b798ee58)
-
-### JSON Structured Logging (Machine-Readable)
-```json
-{"timestamp": "2025-09-27 16:36:15", "level": "info", "logger": "project_name", "filename": "__main__.py", "lineno": 7, "func_name": "main", "message": "Program started."}
-{"exc_info": true, "timestamp": "2025-09-27 16:36:15", "level": "error", "logger": "project_name", "filename": "__main__.py", "lineno": 12, "func_name": "main", "message": "Cannot divide by 0."}
-{"timestamp": "2025-09-27 16:36:15", "level": "info", "logger": "project_name", "filename": "__main__.py", "lineno": 13, "func_name": "main", "message": "Program finished."}
-```
 
 ## Project Structure
 ```shell
